@@ -38,7 +38,7 @@ resource "ibm_container_vpc_cluster" "cluster" {
   vpc_id            = ibm_is_vpc.vpc1.id
   flavor            = var.flavor
   worker_count      = var.worker_count
-  resource_group_id = data.ibm_resource_group.resource_group.id
+  resource_group_id = ibm_resource_group.resource_group.id
 
   zones {
     subnet_id = ibm_is_subnet.subnet1.id
@@ -52,7 +52,7 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
   flavor            = var.flavor
   vpc_id            = ibm_is_vpc.vpc1.id
   worker_count      = var.worker_count
-  resource_group_id = data.ibm_resource_group.resource_group.id
+  resource_group_id = ibm_resource_group.resource_group.id
   zones {
     name      = local.ZONE2
     subnet_id = ibm_is_subnet.subnet2.id
