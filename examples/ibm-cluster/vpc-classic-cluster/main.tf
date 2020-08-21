@@ -33,10 +33,6 @@ resource "ibm_is_subnet" "subnet2" {
   total_ipv4_address_count = 256
 }
 
-data "ibm_resource_group" "resource_group" {
-  name = var.resource_group
-}
-
 resource "ibm_container_vpc_cluster" "cluster" {
   name              = "${var.cluster_name}${random_id.name1.hex}"
   vpc_id            = ibm_is_vpc.vpc1.id
